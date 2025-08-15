@@ -32,7 +32,7 @@
   </style>
 	
     <!-- Meta Pixel Code -->
-  <script src="files/621004980664840" async=""></script><script async="" src="files/fbevents.js"></script><script>
+  <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -46,10 +46,14 @@
   fbq('track', 'PageView');
   </script>
   <!-- End Meta Pixel Code -->
+  <noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=621004980664840&ev=PageView&noscript=1"/>
+  </noscript>
 	
 </head>
 <body class="m-0 bg-[#f8f8f8] flex justify-center">
-  <a href="https://lin.ee/T46VycY" class="fixed right-[10px] bottom-[330px] w-[65px] h-[65px] text-[11px] bg-[#0CB800] rounded-full flex items-center justify-center text-white font-bold shadow-xl z-50 text-lg text-center" target="_blank" onclick="trackFloatingLineClick()">
+  <a href="https://lin.ee/T46VycY" class="fixed right-[10px] bottom-[330px] w-[65px] h-[65px] text-[11px] bg-[#0CB800] rounded-full flex items-center justify-center text-white font-bold shadow-xl z-50 text-lg text-center" target="_blank" onclick="trackFloatingLineClick()" id="line-btn">
     進入<br>LINE
   </a>
   <div class="w-[480px] relative shadow-[0_0_20px_rgba(0,0,0,0.5)]">
@@ -112,7 +116,6 @@
 
     // 页面加载完成事件追踪
     window.addEventListener('load', function() {
-      fbq('track', 'PageView');
       fbq('trackCustom', 'LandingPageView', {
         page_type: 'chinese_medicine',
         source: 'chinese_medicine_landing'
