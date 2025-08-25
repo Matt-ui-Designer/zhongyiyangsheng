@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=375, user-scalable=no">
+  <title>中醫養生免費學習-免費領取課程書記</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>  
+  <script type="module" src="files/main.ts"></script>	
+  <script src="files/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="files/js.js"></script>
+  <script type="text/javascript">
+      $('#addToCartButton').click(function() {
+          fbq('track', 'Purchase', {currency: "USD", value: 30.00});
+      });
+  </script>	
+  <style>
+    tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FDCD22',
+              secondary: '#00C853'
+            },
+            borderRadius: {
+              'none': '0px',
+              'sm': '4px',
+              DEFAULT: '8px',
+              'md': '12px',
+              'lg': '16px',
+              'xl': '20px',
+              '2xl': '24px',
+              '3xl': '32px',
+              'full': '9999px',
+              'button': '10px'
+            }
+          }
+        }
+      }
+  </style>
+	
+  <!-- 问答交互模块 CSS -->
+		<style>
+		/* 问答区域 */
+		.talk {
+		    max-width: 640px;
+		    margin: 0 auto;
+		    font-family: '微软雅黑', sans-serif;
+		    position: relative;
+		}
+
+		.line {
+    		display: block;
+		    margin: 10px 0;
+		}
+
+		.line .left {
+    		display: flex;
+  		  align-items: flex-start;
+		}
+
+		.line .left img {
+  		  width: 40px;
+  		  margin-right: 10px;
+ 		   border-radius: 50%;
+		}
+
+		.line .left div {
+ 		   background: #f5f5f5;
+  		  padding: 8px 12px;
+  		  border-radius: 10px;
+  		  position: relative;
+  		  max-width: 80%;
+		}
+		
+		.line .left div i {
+  		  display: inline-block;
+  		  width: 0;
+  		  height: 0;
+		}
+		.line .right {
+		    display: flex;
+ 		   justify-content: flex-end; /* 整个容器靠右 */
+		    align-items: flex-start;
+		}
+
+		.line .right img {
+ 		   order: 2; /* 让头像排在最后（右边） */
+ 		   margin-left: 8px;
+ 		   border-radius: 50%;
+		}
+
+		.line .right div {
+ 		   order: 1;
+		}
+
+		
+		.loading {
+  		   display: none;
+		   text-align: center;
+  		   color: #999;
+ 		   margin: 10px 0;
+		}
+
+		.select_botton {
+ 		   max-width: 480px;
+  		   margin: 10px auto;
+  		   display: flex;
+  		   flex-wrap: wrap;
+   		   gap: 10px;
+   		   justify-content: center;
+		}
+
+		.select_botton a {
+		   display: inline-block;
+		   text-align: center;
+		   padding: 10px 0;
+  		   background-color: rgb(230, 50, 46);
+  		   color: #fff;
+  		   border-radius: 6px;
+ 		   width: 45%;
+  		   text-decoration: none;
+ 		   font-size: 16px;
+		}
+
+		.select_botton a:hover {
+ 		   background: #BC1E1B;
+		}
+		.select_botton_1 {
+ 		   max-width: 480px;
+  		   margin: 10px 20px;
+  		   display: flex;
+  		   flex-wrap: wrap;
+   		   gap: 10px;
+   		   justify-content: center;
+		}
+			
+		.select_botton_1 a {
+		   display: inline-block;
+		   text-align: center;
+		   padding: 10px 0;
+  		   background-color: rgb(230, 50, 46);
+  		   color: #fff;
+  		   border-radius: 6px;
+ 		   width: 100%;
+  		   text-decoration: none;
+ 		   font-size: 16px;
+		}
+
+		.select_botton_1 a:hover {
+ 		   background: #BC1E1B;
+		}
+		/* 清除浮动 */
+		.ly-clear {
+ 		   clear: both;
+		}
+
+		/* 高亮文本 */
+		.line span {
+		    color: red;
+		    font-weight: bold;
+		}
+		
+		.talk {
+			padding: 10px 0 130px 0;
+			overflow-y: auto; 
+            max-height: calc(100vh - 60px); 
+		}
+		.talk .right{
+			float:right;
+			max-width:80%;
+			margin:10px 0 0 0;
+		}
+		.talk .right img{
+			float:right;
+			margin:0 0 0 5px;
+			border-radius:50%
+		}
+		.talk .right div{
+			position:relative;
+			min-height:41px;
+			margin:0 10px 0 0;
+			padding:10px;
+			background:#A0E75A;
+			color:#333;
+			border-radius:6px;
+		}
+		.talk .right div i{
+			position:absolute;
+			top:15px;
+			right:-8px;
+			width: 0;
+			height: 0;
+			border-top: 6px solid transparent;
+			border-left: 8px solid #A0E75A;
+			border-bottom: 6px solid transparent;
+		}	
+		</style>		
+	
+    <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+   
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '621004980664840');
+  fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+  <noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=621004980664840&ev=PageView&noscript=1"/>
+  </noscript>
+	
+</head>
+<body class="m-0 bg-[#f8f8f8] flex justify-center">
+  <a href="https://lin.ee/T46VycY" class="fixed right-[10px] bottom-[330px] w-[65px] h-[65px] text-[11px] bg-[#0CB800] rounded-full flex items-center justify-center text-white font-bold shadow-xl z-50 text-lg text-center" target="_blank" onclick="trackFloatingLineClick()" id="line-btn">
+    進入<br>LINE
+  </a>
+  <div class="w-[480px] relative shadow-[0_0_20px_rgba(0,0,0,0.5)] bg-[#EEEEEE]">
+    <div class="relative w-full">
+      <img src="files/web.webp" alt="bg-1">
+    </div>
+	<!-- 问答交互 HTML -->
+	<div class="talk" id="messbox">
+  	  <div class="line" style="display: block">
+    	    <div class="left">
+        	    <img src="files/003.jpg" alt="头像">
+            	<div>
+            	    <i></i>
+               	 您好，回答下以下問题，
+                	<span>30節中醫養生課，不花1分錢，誰學誰受益！</span>
+            	</div>
+    	    </div>
+    	    <div class="ly-clear"></div>
+   	 </div>
+
+   	 <div class="line" style="display: block" id="fp">
+   	     <div class="left">
+    	        <img src="files/004.jpg" alt="头像">
+     	       <div id="lx">
+                <i></i>
+                您今年多大年紀了呢？
+     	       </div>
+   	     </div>
+    	    <div class="ly-clear"></div>
+	    </div>
+
+ 	   <div id="msg"></div>
+	</div>
+
+<!-- 选项按钮 -->
+<div class="select_botton" id="option_1">
+    <a href="javascript:" wtindex="7">40歲以下</a>
+    <a href="javascript:" wtindex="2">40-50歲</a>
+    <a href="javascript:" wtindex="2">50-60歲</a>
+    <a href="javascript:" wtindex="2">60歲以上</a>
+</div>
+
+<div class="select_botton" style="display: none" id="option_3">
+    <a href="javascript:" wtindex="3">食補養生</a>
+    <a href="javascript:" wtindex="3">運動養生</a>
+    <a href="javascript:" wtindex="3">中醫養生</a>
+    <a href="javascript:" wtindex="3">沒有養生</a>
+</div>
+
+<div class="select_botton" style="display: none" id="option_4">
+    <a href="javascript:" wtindex="4">調理身體</a>
+    <a href="javascript:" wtindex="4">個人愛好</a>
+    <a href="javascript:" wtindex="4">家人健康</a>
+    <a href="javascript:" wtindex="4">文化傳承</a>
+</div>
+
+<div class="select_botton" style="display: none" id="option_5">
+    <a href="javascript:" wtindex="5">愿意</a>
+    <a href="javascript:" wtindex="7">不愿意</a>
+</div>
+
+<div class="select_botton_1" style="display: none" id="option_6">
+    <a onclick="trackBottomLineClick()" target="_blank" wtindex="4" index="0" id="addToCartButton">
+        &gt;&gt;點擊添加老師好友立即領取養生課程
+    </a>
+</div> 
+	  
+	   
+  </div>
+	
+  <!--div class="fixed bottom-0 left-1/2 -translate-x-1/2 flex items-center justify-center shadow-3xl z-50 rounded-t-xl bg-transparent w-[480px] max-w-full">
+    <a onclick="trackBottomLineClick()" target="_blank">
+      <img src="files/button.png" class="max-w-full h-auto max-h-[150px]">
+    </a>
+  </div-->
+	
+  <script>
+    // Facebook Pixel 事件追踪函数
+
+    // 追踪悬浮LINE按钮点击
+    function trackFloatingLineClick() {
+      // 发送Contact事件到Facebook Pixel
+      fbq('track', 'Contact', {
+        content_name: 'floating_line_button',
+        content_category: 'line_contact',
+        value: 1,
+        currency: 'TWD'
+      });
+
+      // 发送自定义事件
+      fbq('trackCustom', 'FloatingLineClick', {
+        button_type: 'floating',
+        button_position: 'right_side',
+        source: 'chinese_medicine_landing'
+      });
+
+      console.log('悬浮LINE按钮点击已追踪');
+    }
+
+    // 追踪底部LINE按钮点击
+    function trackBottomLineClick() {
+      // 发送Contact事件到Facebook Pixel
+      fbq('track', 'Contact', {
+        content_name: 'bottom_line_button',
+        content_category: 'line_contact',
+        value: 1,
+        currency: 'TWD'
+      });
+
+      // 发送自定义事件
+      fbq('trackCustom', 'BottomLineClick', {
+        button_type: 'bottom',
+        button_position: 'fixed_bottom',
+        source: 'chinese_medicine_landing'
+      });
+
+      console.log('底部LINE按钮点击已追踪');
+
+      // 打开LINE链接
+      window.open('https://lin.ee/T46VycY', '_blank');
+    }
+
+    // 页面加载完成事件追踪
+    window.addEventListener('load', function() {
+      fbq('trackCustom', 'LandingPageView', {
+        page_type: 'chinese_medicine',
+        source: 'chinese_medicine_landing'
+      });
+    });
+  </script>
+
+	
+
+</body>
+</html>
